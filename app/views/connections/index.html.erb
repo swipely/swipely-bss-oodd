@@ -1,0 +1,28 @@
+<h1>My Connections</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><b>Pic</b></th>
+      <th><b>Name</b></th>
+      <th><b>Email</b></th>
+      <th><b>Phone</b></th>
+      <th><b>Login</b></th>
+      <th><b>Connect</b></th>
+    </tr>
+  </thead>
+<% @connections.each do |c| %>
+  <tr>
+    <td><%= gravatar_image_tag c.email, gravatar: { size: 25 } %></td>
+    <td><%= link_to "#{c.first_name} #{c.last_name}", c %></td>
+    <td><%= c.email %></td>
+    <td><%= number_to_phone(c.phone) %></td>
+    <td><%= button_to 'login', sessions_path(id:c.id) %></td>
+<% if @current_user.present? && @current_user.connected_to?(c) %>
+    <td>Connected</td>
+<% else %>
+    <td><%= button_to 'Connect', connections_path(id:c.id) %></td>
+<% end %>
+  </tr>
+<% end %>
+</table>
