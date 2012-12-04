@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702174444) do
+ActiveRecord::Schema.define(:version => 20121204045133) do
 
   create_table "connections", :force => true do |t|
     t.integer  "contact1_id", :null => false
@@ -30,5 +30,16 @@ ActiveRecord::Schema.define(:version => 20120702174444) do
   end
 
   add_index "contacts", ["email"], :name => "index_contacts_on_email", :unique => true
+
+  create_table "elves", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "reindeers", :force => true do |t|
+    t.integer  "elf_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
