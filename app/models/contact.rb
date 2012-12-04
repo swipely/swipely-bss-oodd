@@ -21,8 +21,9 @@ class Contact < ActiveRecord::Base
   def connected_to?(other)
     Connection.connected?(self, other)
   end
-  
+
+  # Return: an array of Contacts this is connected to  
   def connections
-    Connection.for_contact(self)
+    # TODO: Implement me using associations!
   end
 end
